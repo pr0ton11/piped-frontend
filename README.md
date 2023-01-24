@@ -7,3 +7,17 @@ The following changes from the [upstream docker image](https://github.com/TeamPi
 ## Configuration
 
 To set the API endpoint use environment variable ``` API_ENDPOINT ```.
+
+## Use
+
+This image can be used as a normal docker image with the following tag
+
+```
+ghcr.io/pr0ton11/piped-frontend:latest
+```
+
+For example you could pull the image by:
+
+```
+docker pull ghcr.io/pr0ton11/piped-frontend:latest
+```
