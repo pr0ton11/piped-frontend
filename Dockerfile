@@ -1,6 +1,6 @@
-ARG REPO https://github.com/TeamPiped/Piped.git
-
 FROM node:lts-alpine as build
+
+ARG REPO https://github.com/TeamPiped/Piped.git
 
 WORKDIR /app
 
