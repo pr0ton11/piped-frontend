@@ -10,8 +10,9 @@ RUN --mount=type=cache,target=/var/cache/apk \
     git
 
 RUN --mount=type=cache,target=/root/.cache/yarn \
-    --mount=type=cache,target=/app/ \
-    git clone ${SOURCE_REPO} . && \
+    --mount=type=cache,target=/app/dist \
+    git clone ${SOURCE_REPO} /app/Piped && \
+    cd /app/Piped && \
     yarn install --prefer-offline && \
     yarn build && \
     ./localizefonts.sh
@@ -19,7 +20,7 @@ RUN --mount=type=cache,target=/root/.cache/yarn \
 FROM nginx:alpine
 LABEL maintainer "Marc Singer <ms@pr0.tech>"
 
-COPY --from=build /app/dist/ /usr/share/nginx/html/
+COPY --from=build /app/Piped/dist/ /usr/share/nginx/html/
 
 COPY entrypoint.sh /docker-entrypoint.d/40-piped.sh
 COPY nginx.conf /etc/nginx/conf.d/default.conf
