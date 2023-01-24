@@ -6,7 +6,7 @@ The following changes from the [upstream docker image](https://github.com/TeamPi
 
 ## Configuration
 
-To set the API endpoint use environment variable ``` API_ENDPOINT ```.
+To set the API endpoint use environment variable ``` API_ENDPOINT ```
 
 ## Use
 
