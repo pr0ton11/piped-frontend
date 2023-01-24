@@ -27,7 +27,6 @@ jobs:
       - name: "Build:dockerimage"
         uses: docker/build-push-action@v3
         with:
-          context: .
           push: true
           platforms: linux/amd64
           tags: ghcr.io/pr0ton11/piped-frontend:latest
