@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/var/cache/apk \
 RUN --mount=type=cache,target=/root/.cache/yarn \
     --mount=type=cache,target=/app/ \
     --mount=type=cache,target=/app/node_modules \
-    git clone ${REPO} /app && \
+    git clone REPO /app && \
     yarn install --prefer-offline && \
     yarn build && \
     ./localizefonts.sh
