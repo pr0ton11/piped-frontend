@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/var/cache/apk \
     git
 
 RUN --mount=type=cache,target=/root/.cache/yarn \
-    --mount=type=cache,target=/app/dist \
+    --mount=type=cache,target=/app/Piped/dist \
     git clone ${SOURCE_REPO} /app/Piped && \
     cd /app/Piped && \
     yarn install --prefer-offline && \

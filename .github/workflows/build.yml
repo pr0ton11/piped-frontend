@@ -30,5 +30,4 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64
-          tags: latest
-          labels: ghcr.io/pr0ton11/piped-frontend
+          tags: ghcr.io/pr0ton11/piped-frontend:latest
