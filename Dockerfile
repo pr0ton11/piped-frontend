@@ -1,6 +1,6 @@
 FROM node:lts-alpine as build
 
-ARG REPO https://github.com/TeamPiped/Piped.git
+ENV SOURCE_REPO https://github.com/TeamPiped/Piped.git
 
 WORKDIR /app
 
@@ -11,13 +11,13 @@ RUN --mount=type=cache,target=/var/cache/apk \
 
 RUN --mount=type=cache,target=/root/.cache/yarn \
     --mount=type=cache,target=/app/ \
-    --mount=type=cache,target=/app/node_modules \
-    git clone ${REPO} /app && \
+    git clone ${SOURCE_REPO} /app && \
     yarn install --prefer-offline && \
     yarn build && \
     ./localizefonts.sh
 
 FROM nginx:alpine
+LABEL maintainer "Marc Singer <ms@pr0.tech>"
 
 COPY --from=build /app/dist/ /usr/share/nginx/html/
 
