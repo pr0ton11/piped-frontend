@@ -3,19 +3,19 @@ FROM node:lts-alpine as build
 ENV SOURCE_REPO https://github.com/TeamPiped/Piped.git
 
 WORKDIR /app
-COPY gfonts.sh /app/
 
 RUN --mount=type=cache,target=/var/cache/apk \
     apk add --no-cache \
     curl \
-    git
+    git \
+    grep
 
 RUN --mount=type=cache,target=/root/.cache/yarn \
     git clone ${SOURCE_REPO} /app/Piped && \
     cd /app/Piped && \
     yarn install --prefer-offline && \
     yarn build && \
-    sh /app/gfonts.sh
+    ./localizefonts.sh
 
 FROM nginx:alpine
 LABEL maintainer "Marc Singer <ms@pr0.tech>"
