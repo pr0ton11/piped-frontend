@@ -15,7 +15,7 @@ RUN --mount=type=cache,target=/root/.cache/yarn \
     cd /app/Piped && \
     yarn install --prefer-offline && \
     yarn build && \
-    ./app/gfonts.sh
+    sh /app/gfonts.sh
 
 FROM nginx:alpine
 LABEL maintainer "Marc Singer <ms@pr0.tech>"
